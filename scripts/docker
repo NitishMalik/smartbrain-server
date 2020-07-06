@@ -1,0 +1,50 @@
+// create docker tag (with name) "." is to specify the path to find dockerfile
+docker build -t smartbraincontainer .
+
+// To run and enter the container 
+docker run -it smartbraincontainer
+
+//To run the docker container in background
+docker run -it -d smartbraincontainer
+
+// To get list of all containers
+docker ps
+
+//To go into the container which is running in background
+docker exec -it #ofContainer
+
+//Stop the container
+docker stop #ofContainer
+
+// Docker is not aware of your localhost , so port binding is required
+docker run -it -p 3000:3000 smartbraincontainer
+
+//After modifying the docker file, you will have to rebuild the image to get the latest code there
+
+
+---Docker-compose commands ---
+// Build images using docker commands - will go and read the docker-compose.yml file
+docker-compose build
+
+// build and Bring up all services in docker -compose 
+docker-compose up --build
+
+// bring up all container , building is not needed 
+docker-comnpose up
+
+//Run 
+docker-compose run
+
+//To bring down any container working in background
+docker-compose down
+
+// Volumes is added to map current directory to container directory
+// if we change anything in current directory the container will reload automatically
+volumes: 
+            - ./:/usr/src/smart-brain-api
+
+// Run the services in background
+docker-compose up -d
+
+//Go into bash of a service container 
+docker-compose exec #servicename bash
