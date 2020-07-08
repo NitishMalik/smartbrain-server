@@ -1,0 +1,18 @@
+// Accessible @
+https://gjpxgemyya.execute-api.us-east-2.amazonaws.com/default/SmartBrainRank?rank=4
+
+const emojis = ["😴", "😄", "😃", "⛔", "🎠", "🚓", "🚇"];
+exports.handler = async (event) => {
+    const rank = event.queryStringParameters.rank;
+    const rankEmoji = emojis[rank >= emojis.length ? emojis.length -1 : rank];
+    const response = {
+        statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin':'*'
+        },
+        body: JSON.stringify({
+            badge:rankEmoji
+        }),
+    };
+    return response;
+};
